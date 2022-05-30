@@ -108,6 +108,7 @@ body {
   }
 
   &__link {
+    cursor: pointer;
   }
 }
 .page {
@@ -134,8 +135,8 @@ body {
     background-color: white;
   }
   &__currencies img {
-    width: 25px;
-    height: inherit;
+    width: 35px;
+    height: 35px;
     margin: 10px;
   }
   &__currencies select {
@@ -143,7 +144,8 @@ body {
     font-size: inherit;
   }
 
-  &__plot {
+  &__chart {
+    margin: auto;
   }
 }
 .currencies {
@@ -151,11 +153,13 @@ body {
     height: inherit;
     font-size: inherit;
     width: 100%;
+    padding: 5px;
   }
   &__to {
     font-size: inherit;
     height: inherit;
     width: 100%;
+    padding: 5px;
   }
   &__button {
     height: inherit;
