@@ -1,8 +1,3 @@
-import moment from "moment";
-
-import "moment/locale/ru";
-import "moment/locale/en-gb";
-
 export const parseCurrencies = (currency) => {
   if (currency === "BTC") return "bitcoin";
   else if (currency === "ETH") return "ethereum";
@@ -10,5 +5,7 @@ export const parseCurrencies = (currency) => {
 };
 
 export const parseTimestamp = (timestamp) => {
-  return moment.unix(timestamp).format("MM/DD/YYYY");
+  var date = new Date(timestamp);
+
+  return date.toLocaleString();
 };

@@ -38,57 +38,57 @@ export default function Chart() {
   };
 
   const parseChartData = () => {
-    console.log("parsed");
-    const parsedData = chartData.map((element) => ({
-      name: element[0],
-      coin: element[1],
-    }));
+    // const parsedData = chartData.map((element) => ({
+    //   name: element[0],
+    //   coin: element[1],
+    // }));
     // console.log("ddd", parsedData);
     setChartData(
       chartData.map((element) => ({
         name: parseTimestamp(element[0]),
-        coin: element[1],
+        Price: element[1],
       }))
     );
     console.log("chart", chartData);
   };
 
-  useEffect(() => {
-    if (!chartData.length) getData();
-
-    if (!isLoading) parseChartData();
-    console.log(isLoading);
-  }, [isLoading]);
+  // getData();
+  console.log("render");
+  if (!isLoading) parseChartData();
+  console.log(isLoading);
+  useEffect(() => {}, []);
 
   return (
-    <div>
+    <div className="main-block__chart">
       {/* <button onClick={() => parseChartData()}>He</button> */}
       {isLoading ? (
         "loading"
       ) : (
-        <LineChart
-          width={500}
-          height={300}
-          data={chartData}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line
-            type="monotone"
-            dataKey="coin"
-            stroke="#000000"
-            //   activeDot={{ r: 8 }}
-          />
-        </LineChart>
+        <ResponsiveContainer>
+          <LineChart
+            width={1000}
+            height={300}
+            data={chartData}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line
+              type="monotone"
+              dataKey="Price"
+              stroke="#000000"
+              //   activeDot={{ r: 8 }}
+            />
+          </LineChart>
+        </ResponsiveContainer>
       )}
     </div>
   );

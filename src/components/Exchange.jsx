@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCurrencies } from "../api/requests";
 import { useEffect, useRef } from "react";
 import { parseCurrencies } from "../utils/utils";
-import Chart from "../components/Chart";
+import Chart from "../components/ExchangeChart";
 
 export const Exchange = () => {
   const dispatch = useDispatch();
@@ -72,56 +72,51 @@ export const Exchange = () => {
     );
   }, []);
   return (
-    <main className="page">
-      <div className="page__main-block _container">
-        <div className="main-block__body">
-          <h1 className="main-block__text">Please choose currencies </h1>
-          <div className="main-block__currencies">
-            <select
-              ref={fromRef}
-              value={fromCurrency}
-              onChange={(e) => setFromCurrency(e.target.value)}
-            >
-              <option value="BTC">BTC</option>
-              <option value="ETH">ETH</option>
-              <option value="USD">USD</option>
-            </select>
-            <input
-              type="text"
-              value={fromAmount}
-              className="currencies__from"
-              onChange={(e) => setFromAmount(e.target.value)}
-            />
-            <img src="img/exchange/1.svg" alt="exchange" />{" "}
-            <select ref={toRef} onChange={(e) => setToCurrency(e.target.value)}>
-              <option value="USD">USD</option>
-              <option value="BTC">BTC</option>
-              <option value="ETH">ETH</option>
-            </select>
-            <input
-              type="text"
-              value={toAmount}
-              className="currencies__to"
-              //   onChange={(e) => setToAmount(e.target.value)}
-              readOnly="readonly"
-            />
-            <button
-              onClick={() => {
-                convert();
-              }}
-              className="currencies__button button"
-              //   disabled={
-              //     { ...fromCurrency } === { ...toCurrency } ? true : false
-              //   }
-            >
-              Convert
-            </button>
-          </div>
-        </div>
-        <div className="main-block__chart">
-          <Chart />
+    <div className="page__main-block _container">
+      <div className="main-block__body">
+        <h1 className="main-block__text">Please choose currencies </h1>
+        <div className="main-block__currencies">
+          <select
+            ref={fromRef}
+            value={fromCurrency}
+            onChange={(e) => setFromCurrency(e.target.value)}
+          >
+            <option value="BTC">BTC</option>
+            <option value="ETH">ETH</option>
+            <option value="USD">USD</option>
+          </select>
+          <input
+            type="text"
+            value={fromAmount}
+            className="currencies__from"
+            onChange={(e) => setFromAmount(e.target.value)}
+          />
+          <img src="img/exchange/1.svg" alt="exchange" />{" "}
+          <select ref={toRef} onChange={(e) => setToCurrency(e.target.value)}>
+            <option value="USD">USD</option>
+            <option value="BTC">BTC</option>
+            <option value="ETH">ETH</option>
+          </select>
+          <input
+            type="text"
+            value={toAmount}
+            className="currencies__to"
+            //   onChange={(e) => setToAmount(e.target.value)}
+            readOnly="readonly"
+          />
+          <button
+            onClick={() => {
+              convert();
+            }}
+            className="currencies__button button"
+            //   disabled={
+            //     { ...fromCurrency } === { ...toCurrency } ? true : false
+            //   }
+          >
+            Convert
+          </button>
         </div>
       </div>
-    </main>
+    </div>
   );
 };
