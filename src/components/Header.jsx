@@ -1,13 +1,9 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 
 export const Header = () => {
-  const chartData = useSelector((state) => state.exchange.chartData);
-  const dispatch = useDispatch();
   const location = useLocation();
-
   const navigate = useNavigate();
 
   const [exchangeLinkClass, setExchangeLinkClass] = useState(

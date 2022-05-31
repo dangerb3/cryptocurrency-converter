@@ -434,17 +434,7 @@ body {
       width: 100vw;
     }
   }
-  // @media (max-width: 950px) {
-  //   &__currencies {
-  //     width: 70vw;
-  //   }
-  // }
 
-  // @media (max-width: 524px) {
-  //   &__currencies {
-  //     width: 100vw;
-  //   }
-  // }
   @media (max-width: 457px) {
     &__currencies {
       padding: 0px 5px;
@@ -470,12 +460,6 @@ body {
     }
   }
 }
-
-// @media (max-width: 850px) {
-//   .button-amount {
-//     padding: 0.2em 0.5em;
-//   }
-// }
 
 .footer {
   margin-top: 200px;

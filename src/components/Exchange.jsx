@@ -1,35 +1,24 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { convertCurrency, fetchCurrencies } from "../api/requests";
+import { fetchCurrencies } from "../api/requests";
 import { useEffect, useRef } from "react";
 import { parseCurrencies } from "../utils/utils";
-import Chart from "../components/ExchangeChart";
 
 export const Exchange = () => {
   const dispatch = useDispatch();
-  const fromAmount = useSelector((state) => state.exchange.fromAmount);
-  //   console.log(state);
+
   const toAmount = useSelector((state) => state.exchange.toAmount);
   const fromCurrency = useSelector((state) => state.exchange.fromCurrency);
-  //   console.log(state);
   const toCurrency = useSelector((state) => state.exchange.toCurrency);
-  const chartData = useSelector((state) => state.exchange.chartData);
 
   const setFromCurrency = (e) => {
-    console.log("currency", e);
     dispatch({ type: "SET_VARS", payload: { fromCurrency: e } });
-    console.log("state", fromCurrency);
   };
   const setFromAmount = (e) => {
     dispatch({ type: "SET_VARS", payload: { fromAmount: e } });
   };
   const setToCurrency = (e) => {
     dispatch({ type: "SET_VARS", payload: { toCurrency: e } });
-  };
-  const setToAmount = (e) => {
-    const am = { toAmount: e };
-
-    dispatch({ type: "SET_VARS", payload: am });
   };
 
   const preventRepeatCurrencies = () => {
@@ -46,7 +35,6 @@ export const Exchange = () => {
   const toAmountRef = useRef();
 
   const convert = () => {
-    console.log(toRef.current.value);
     setFromAmount(fromAmountRef.current.value);
 
     dispatch(
@@ -55,8 +43,6 @@ export const Exchange = () => {
         parseCurrencies(toCurrency)
       )
     );
-
-    // toAmountRef.current.value = toAmount;
   };
 
   useEffect(() => {
@@ -66,14 +52,12 @@ export const Exchange = () => {
         parseCurrencies(toCurrency)
       )
     );
-    // toAmountRef.current.value = toAmount;
-    // convert();
+
     preventRepeatCurrencies();
-  }, [fromAmount, fromCurrency, toCurrency]);
+  }, []);
   return (
     <div className="page__main-block _container">
       <div className="main-block__body">
-        {/* <h1 className="main-block__text">Please choose currencies </h1> */}
         <div className="main-block__currencies">
           <select
             ref={fromRef}
@@ -87,7 +71,6 @@ export const Exchange = () => {
           <input
             ref={fromAmountRef}
             type="text"
-            // value={fromAmount}
             className="currencies__from"
             onChange={(e) => setFromAmount(e.target.value)}
             defaultValue={1}
@@ -103,18 +86,13 @@ export const Exchange = () => {
             type="text"
             value={toAmount}
             className="currencies__to"
-            //   onChange={(e) => setToAmount(e.target.value)}
             readOnly="readonly"
-            // defaultValue={toAmount}
           />
           <button
             onClick={() => {
               convert();
             }}
             className="currencies__button button"
-            //   disabled={
-            //     { ...fromCurrency } === { ...toCurrency } ? true : false
-            //   }
           >
             Convert
           </button>

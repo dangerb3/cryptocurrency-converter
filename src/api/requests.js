@@ -14,7 +14,6 @@ export const fetchCurrencies = (fromCurrency, toCurrency) => {
       .then((response) => response.json())
       .then((json) => {
         dispatch(exchangeAction(json[fromCurrency][toCurrency]));
-        // console.log(json);
       });
   };
 };
@@ -48,13 +47,6 @@ export const fetchHistoricalCoinData = (
             }))
           )
         );
-        console.log("req", json.prices);
-        // dispatch(setIsLoadingAction(false));
       });
-    // const response = await fetch(
-    //   `https://api.coingecko.com/api/v3/coins/${fromCurrency}/market_chart?vs_currency=${toCurrency}&days=${days}`
-    // );
-    // const data = await response.json();
-    // dispatch(setChartAction(data));
   };
 };

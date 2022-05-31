@@ -1,10 +1,7 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useRef } from "react";
-import { fetchHistoricalCoinData } from "../api/requests";
-import { parseCurrencies, parseTimestamp } from "../utils/utils";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
-import { PureComponent } from "react";
 import {
   LineChart,
   BarChart,

@@ -1,12 +1,7 @@
 import "./App.scss";
-import { Header } from "./components/Header";
 
 function App() {
-  return (
-    <div className="App">
-      {/* <footer className="footer">footer</footer> */}
-    </div>
-  );
+  return <div className="App"></div>;
 }
 
 export default App;

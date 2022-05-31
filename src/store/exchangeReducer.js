@@ -1,6 +1,3 @@
-import { store } from ".";
-const redux = require("redux");
-
 const defaultState = {
   fromCurrency: "BTC",
   toCurrency: "USD",
@@ -34,17 +31,3 @@ export const setIsLoadingAction = (payload) => ({
   type: "SET_IS-LOADING",
   payload,
 });
-
-// const dispatchChaining = () => async (dispatch) => {
-//   await Promise.all([
-//     dispatch(loadPosts()), // <-- async dispatch chaining in action
-//     dispatch(loadProfile()),
-//   ]);
-
-//   return dispatch(updateDone());
-// };
-
-// const actions = redux.bindActionCreators({ dispatchChaining }, store.dispatch);
-// const unsubscribe = store.subscribe(async () => console.log(store.getState()));
-
-// actions.dispatchChaining().then(() => unsubscribe()); // <-- thenable

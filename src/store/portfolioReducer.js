@@ -17,13 +17,3 @@ export const portfolioReducer = (state = defaultState, action) => {
       return state;
   }
 };
-
-// export const setTotalAction = (payload) => ({ type: "TOTAL_CHANGE", payload });
-// export const setChartAction = (payload) => ({
-//   type: "SET_CHART-DATA",
-//   payload,
-// });
-// export const setIsLoadingAction = (payload) => ({
-//   type: "SET_IS-LOADING",
-//   payload,
-// });

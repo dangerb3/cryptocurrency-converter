@@ -1,7 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useRef } from "react";
-import Chart from "../components/PortfolioChart";
 import { convertCurrency } from "../api/requests";
 import { parseCurrencies } from "../utils/utils";
 
@@ -59,9 +58,7 @@ export const Portfolio = () => {
           <input
             ref={btcRef}
             type="number"
-            //   value={btcBalance}
             className="portfolio-block__currencies-input"
-            //   onChange={(e) => setBtcBalance(e.target.value)}
           />
           <div className="portfolio-block__change">
             <button
@@ -89,9 +86,7 @@ export const Portfolio = () => {
           <input
             ref={ethRef}
             type="number"
-            //   value={ethBalance}
             className="portfolio-block__currencies-input"
-            //   onChange={(e) => setEthBalance(e.target.value)}
           />
           <div className="portfolio-block__change">
             <button
@@ -119,9 +114,7 @@ export const Portfolio = () => {
           <input
             ref={usdRef}
             type="number"
-            //   value={usdBalance}
             className="portfolio-block__currencies-input"
-            //   onChange={(e) => setUsdBalance(e.target.value)}
           />
           <div className="portfolio-block__change">
             <button
@@ -150,9 +143,7 @@ export const Portfolio = () => {
             readOnly="readonly"
             ref={totalRef}
             type="number"
-            //   value={usdBalance}
             className="portfolio-block__currencies-input"
-            //   onChange={(e) => setUsdBalance(e.target.value)}
           />
         </div>
       </div>
