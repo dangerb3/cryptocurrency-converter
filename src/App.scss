@@ -249,7 +249,8 @@ body {
     outline: none;
   }
   &__button {
-    height: inherit;
+    position: relative;
+    height: 51px;
     margin-right: -1px;
   }
 }
@@ -395,8 +396,7 @@ body {
   font-size: inherit;
   cursor: pointer;
   background-color: #000000;
-  border-left: 2px solid black;
-  border-right: 1px solid black;
+  border: none;
   padding: 0.35em 1.2em;
   text-decoration: none;
   color: #ffffff;
@@ -437,7 +437,7 @@ body {
 
   @media (max-width: 457px) {
     &__currencies {
-      padding: 0px 5px;
+      padding: 0px 10px;
     }
   }
   @media (max-width: 524px) {

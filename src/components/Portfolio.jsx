@@ -62,7 +62,7 @@ export const Portfolio = () => {
           />
           <div className="portfolio-block__change">
             <button
-              className="button-amount button"
+              className="button-amount"
               onClick={() => {
                 setBtcBalance(Number(btcRef.current.value));
               }}
@@ -70,7 +70,7 @@ export const Portfolio = () => {
               +
             </button>
             <button
-              className="button-amount button"
+              className="button-amount"
               onClick={() => {
                 setBtcBalance(-Number(btcRef.current.value));
               }}
@@ -90,7 +90,7 @@ export const Portfolio = () => {
           />
           <div className="portfolio-block__change">
             <button
-              className="button-amount button"
+              className="button-amount"
               onClick={() => {
                 setEthBalance(Number(ethRef.current.value));
               }}
@@ -98,7 +98,7 @@ export const Portfolio = () => {
               +
             </button>
             <button
-              className="button-amount button"
+              className="button-amount"
               onClick={() => {
                 setEthBalance(-Number(ethRef.current.value));
               }}
@@ -118,7 +118,7 @@ export const Portfolio = () => {
           />
           <div className="portfolio-block__change">
             <button
-              className="button-amount button"
+              className="button-amount"
               onClick={() => {
                 setUsdBalance(Number(usdRef.current.value));
               }}
@@ -126,7 +126,7 @@ export const Portfolio = () => {
               +
             </button>
             <button
-              className="button-amount button"
+              className="button-amount"
               onClick={() => {
                 setUsdBalance(-Number(usdRef.current.value));
               }}
