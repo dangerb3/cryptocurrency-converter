@@ -37,59 +37,36 @@ export default function Chart() {
     );
   };
 
-  const parseChartData = () => {
-    // const parsedData = chartData.map((element) => ({
-    //   name: element[0],
-    //   coin: element[1],
-    // }));
-    // console.log("ddd", parsedData);
-    setChartData(
-      chartData.map((element) => ({
-        name: parseTimestamp(element[0]),
-        Price: element[1],
-      }))
-    );
-    console.log("chart", chartData);
-  };
-
-  // getData();
-  console.log("render");
-  if (!isLoading) parseChartData();
-  console.log(isLoading);
-  useEffect(() => {}, []);
+  useEffect(() => {
+    getData();
+  }, [fromCurrency, toCurrency]);
 
   return (
-    <div className="main-block__chart">
-      {/* <button onClick={() => parseChartData()}>He</button> */}
-      {isLoading ? (
+    <div className="main-block__chart _container">
+      {/* {isLoading ? (
         "loading"
-      ) : (
-        <ResponsiveContainer>
-          <LineChart
-            width={1000}
-            height={300}
-            data={chartData}
-            margin={{
-              top: 5,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Line
-              type="monotone"
-              dataKey="Price"
-              stroke="#000000"
-              //   activeDot={{ r: 8 }}
-            />
-          </LineChart>
-        </ResponsiveContainer>
-      )}
+      ) : ( */}
+      <ResponsiveContainer>
+        <LineChart
+          width={1000}
+          height={300}
+          data={chartData}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Line type="monotone" dataKey="Price" stroke="#000000" />
+        </LineChart>
+      </ResponsiveContainer>
+      {/* )} */}
     </div>
   );
 }

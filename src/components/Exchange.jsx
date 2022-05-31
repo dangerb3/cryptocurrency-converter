@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCurrencies } from "../api/requests";
+import { convertCurrency, fetchCurrencies } from "../api/requests";
 import { useEffect, useRef } from "react";
 import { parseCurrencies } from "../utils/utils";
 import Chart from "../components/ExchangeChart";
@@ -19,7 +19,6 @@ export const Exchange = () => {
     console.log("currency", e);
     dispatch({ type: "SET_VARS", payload: { fromCurrency: e } });
     console.log("state", fromCurrency);
-    // preventRepeatCurrencies();
   };
   const setFromAmount = (e) => {
     dispatch({ type: "SET_VARS", payload: { fromAmount: e } });
@@ -34,22 +33,21 @@ export const Exchange = () => {
   };
 
   const preventRepeatCurrencies = () => {
-    if ((toRef.current.value = fromRef.current.value)) {
-      if (fromRef.current.value !== "ETH") toRef.current.value = "ETH";
+    if (toRef.current.value === fromRef.current.value) {
+      if (fromRef.current.value !== "USD") toRef.current.value = "USD";
       else if (fromRef.current.value !== "BTC") toRef.current.value = "BTC";
-      else if (fromRef.current.value !== "USD") toRef.current.value = "USD";
+      else if (fromRef.current.value !== "ETH") toRef.current.value = "ETH";
     }
   };
 
   const toRef = useRef();
   const fromRef = useRef();
+  const fromAmountRef = useRef();
+  const toAmountRef = useRef();
 
   const convert = () => {
-    // if (fromCurrency === toCurrency) {
-    //   setToCurrency(fromCurrency);
-    //   return;
-    // }
     console.log(toRef.current.value);
+    setFromAmount(fromAmountRef.current.value);
 
     dispatch(
       fetchCurrencies(
@@ -58,9 +56,7 @@ export const Exchange = () => {
       )
     );
 
-    console.log("h", chartData);
-    // console.log(fromCurrency);
-    // toRef.current.value = toAmount;
+    // toAmountRef.current.value = toAmount;
   };
 
   useEffect(() => {
@@ -70,11 +66,14 @@ export const Exchange = () => {
         parseCurrencies(toCurrency)
       )
     );
-  }, []);
+    // toAmountRef.current.value = toAmount;
+    // convert();
+    preventRepeatCurrencies();
+  }, [fromAmount, fromCurrency, toCurrency]);
   return (
     <div className="page__main-block _container">
       <div className="main-block__body">
-        <h1 className="main-block__text">Please choose currencies </h1>
+        {/* <h1 className="main-block__text">Please choose currencies </h1> */}
         <div className="main-block__currencies">
           <select
             ref={fromRef}
@@ -86,10 +85,12 @@ export const Exchange = () => {
             <option value="USD">USD</option>
           </select>
           <input
+            ref={fromAmountRef}
             type="text"
-            value={fromAmount}
+            // value={fromAmount}
             className="currencies__from"
             onChange={(e) => setFromAmount(e.target.value)}
+            defaultValue={1}
           />
           <img src="img/exchange/1.svg" alt="exchange" />{" "}
           <select ref={toRef} onChange={(e) => setToCurrency(e.target.value)}>
@@ -98,11 +99,13 @@ export const Exchange = () => {
             <option value="ETH">ETH</option>
           </select>
           <input
+            ref={toAmountRef}
             type="text"
             value={toAmount}
             className="currencies__to"
             //   onChange={(e) => setToAmount(e.target.value)}
             readOnly="readonly"
+            // defaultValue={toAmount}
           />
           <button
             onClick={() => {

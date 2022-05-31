@@ -6,12 +6,13 @@ import App from "./App";
 import { store } from "./store";
 import { Provider } from "react-redux";
 import { PublicRouter } from "./router/routes";
+import { Header } from "./components/Header";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <Header />
       <PublicRouter />
     </BrowserRouter>
   </Provider>

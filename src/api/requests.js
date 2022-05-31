@@ -4,7 +4,7 @@ import {
   setIsLoadingAction,
 } from "../store/exchangeReducer";
 
-import { setTotalAction } from "../store/portfolioReducer";
+import { parseTimestamp } from "../utils/utils";
 
 export const fetchCurrencies = (fromCurrency, toCurrency) => {
   return function (dispatch) {
@@ -40,9 +40,16 @@ export const fetchHistoricalCoinData = (
     )
       .then((response) => response.json())
       .then((json) => {
-        dispatch(setChartAction(json.prices));
+        dispatch(
+          setChartAction(
+            json.prices.map((element) => ({
+              name: parseTimestamp(element[0]),
+              Price: element[1],
+            }))
+          )
+        );
         console.log("req", json.prices);
-        dispatch(setIsLoadingAction(false));
+        // dispatch(setIsLoadingAction(false));
       });
     // const response = await fetch(
     //   `https://api.coingecko.com/api/v3/coins/${fromCurrency}/market_chart?vs_currency=${toCurrency}&days=${days}`

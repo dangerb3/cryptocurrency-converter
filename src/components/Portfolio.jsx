@@ -65,7 +65,7 @@ export const Portfolio = () => {
           />
           <div className="portfolio-block__change">
             <button
-              className="currencies__button button"
+              className="button-amount button"
               onClick={() => {
                 setBtcBalance(Number(btcRef.current.value));
               }}
@@ -73,7 +73,7 @@ export const Portfolio = () => {
               +
             </button>
             <button
-              className="currencies__button button"
+              className="button-amount button"
               onClick={() => {
                 setBtcBalance(-Number(btcRef.current.value));
               }}
@@ -95,7 +95,7 @@ export const Portfolio = () => {
           />
           <div className="portfolio-block__change">
             <button
-              className="currencies__button button"
+              className="button-amount button"
               onClick={() => {
                 setEthBalance(Number(ethRef.current.value));
               }}
@@ -103,7 +103,7 @@ export const Portfolio = () => {
               +
             </button>
             <button
-              className="currencies__button button"
+              className="button-amount button"
               onClick={() => {
                 setEthBalance(-Number(ethRef.current.value));
               }}
@@ -125,7 +125,7 @@ export const Portfolio = () => {
           />
           <div className="portfolio-block__change">
             <button
-              className="currencies__button button"
+              className="button-amount button"
               onClick={() => {
                 setUsdBalance(Number(usdRef.current.value));
               }}
@@ -133,7 +133,7 @@ export const Portfolio = () => {
               +
             </button>
             <button
-              className="currencies__button button"
+              className="button-amount button"
               onClick={() => {
                 setUsdBalance(-Number(usdRef.current.value));
               }}
@@ -147,6 +147,7 @@ export const Portfolio = () => {
         <h1 className="portfolio-block__text">Total Balance in USD</h1>
         <div className="portfolio-block__currencies">
           <input
+            readOnly="readonly"
             ref={totalRef}
             type="number"
             //   value={usdBalance}
@@ -155,7 +156,6 @@ export const Portfolio = () => {
           />
         </div>
       </div>
-      <div className="portfolio-block__chart"></div>
     </div>
   );
 };
