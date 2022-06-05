@@ -37,21 +37,11 @@ export const Exchange = () => {
   const convert = () => {
     setFromAmount(fromAmountRef.current.value);
 
-    dispatch(
-      fetchCurrencies(
-        parseCurrencies(fromCurrency),
-        parseCurrencies(toCurrency)
-      )
-    );
+    dispatch(fetchCurrencies(fromCurrency, toCurrency));
   };
 
   useEffect(() => {
-    dispatch(
-      fetchCurrencies(
-        parseCurrencies(fromCurrency),
-        parseCurrencies(toCurrency)
-      )
-    );
+    dispatch(fetchCurrencies(fromCurrency, toCurrency));
 
     preventRepeatCurrencies();
   }, []);
