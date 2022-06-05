@@ -37,7 +37,9 @@ export const fetchHistoricalCoinData = (
     dispatch(setIsLoadingAction(true));
 
     fetch(
-      `https://api.coingecko.com/api/v3/coins/${fromCurrency}/market_chart?vs_currency=${toCurrency}&days=${days}`
+      `https://api.coingecko.com/api/v3/coins/${parseCurrencies(
+        fromCurrency
+      )}/market_chart?vs_currency=${toCurrency.toLowerCase()}&days=${days}`
     )
       .then((response) => response.json())
       .then((json) => {

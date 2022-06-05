@@ -22,17 +22,12 @@ export default function Chart() {
   const chartData = useSelector((state) => state.exchange.chartData);
 
   const getData = () => {
-    dispatch(
-      fetchHistoricalCoinData(
-        14,
-        parseCurrencies(fromCurrency),
-        parseCurrencies(toCurrency)
-      )
-    );
+    dispatch(fetchHistoricalCoinData(14, fromCurrency, toCurrency));
   };
 
   useEffect(() => {
     getData();
+    console.log(chartData);
   }, [fromCurrency, toCurrency]);
 
   return (
